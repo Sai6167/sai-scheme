@@ -38,7 +38,7 @@ const Search = () => {
                 {Object.keys(data).length === 0 ? (
                     <h2>No search Found : {query.get("sname")}</h2>
                 ): (
-                    <table className="styled-table">
+                <table className="styled-table">
                     <thead>
                         <tr>
                             <th style={{ textAlign: "center" }}>No.</th>
@@ -66,12 +66,12 @@ const Search = () => {
                                 <td>{data[id].status}</td>
                 
                              </tr>
-                             );
+                            );
                         })}
                     </tbody>
                 </table>
 
-                )}
+            )}
             <Link to="/">
             <button className="bttn btn-edit">Go Back</button>
             </Link>
