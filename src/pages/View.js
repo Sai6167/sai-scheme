@@ -10,7 +10,7 @@ const View = () => {
 
   useEffect(() => {
     firebase
-      .child(`contacts/${id}`)
+      .child(`schemes/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {
@@ -50,6 +50,7 @@ const View = () => {
           <br />
           <strong>Scheme Documents: </strong>
           <span>{user.sdocs}</span>
+          
           <br />
           <br />
           <strong>Scheme Status: </strong>

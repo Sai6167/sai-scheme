@@ -11,7 +11,7 @@ const Search = () => {
     }
 
     let query = useQuery();
-    let search = query.get("sname");
+    let search = query.get("name");
     console.log("search",search);
 
     useEffect(() => {
@@ -20,8 +20,8 @@ const Search = () => {
 
     const searchData = () => {
         firebase
-            .child("contacts")
-            .orderByChild("sname")
+            .child("schemes")
+            .orderByChild("sstate")
             .equalTo(search)
             .on("value", (snapshot) => {
                 if (snapshot.val()){
@@ -36,7 +36,7 @@ const Search = () => {
             <div style={{ marginTop: "100px" }}>
             
                 {Object.keys(data).length === 0 ? (
-                    <h2>No search Found : {query.get("sname")}</h2>
+                    <h2>No search Found : {query.get("name")}</h2>
                 ): (
                 <table className="styled-table">
                     <thead>
@@ -47,8 +47,9 @@ const Search = () => {
                             <th style={{ textAlign: "center" }}>Scheme Eligible</th>
                             <th style={{ textAlign: "center" }}>Scheme Details</th>
                             <th style={{ textAlign: "center" }}>Scheme Documents</th>
+                            <th style={{ textAlign: "center" }}>State</th>
                             <th style={{ textAlign: "center" }}>Status</th>
-                            <th style={{ textAlign: "center" }}>Action</th>
+                            {/* <th style={{ textAlign: "center" }}>Action</th> */}
             
                         </tr>
                     </thead>
@@ -62,7 +63,8 @@ const Search = () => {
                                 <td>{data[id].sbenefit}</td>
                                 <td>{data[id].seligible}</td>
                                 <td>{data[id].sdetail}</td>
-                                <td>{data[id].sdocs}</td>
+                                <td>{data[id].sdocs}</td>  
+                                <td>{data[id].sstate}</td>                              
                                 <td>{data[id].status}</td>
                 
                              </tr>

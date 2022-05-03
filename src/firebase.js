@@ -4,12 +4,18 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAQd2xZWTLOUdwaoyv4FDU8-glUkm9rnu8",
-    authDomain: "contact-form-d8d2b.firebaseapp.com",
-    projectId: "contact-form-d8d2b",
-    storageBucket: "contact-form-d8d2b.appspot.com",
-    messagingSenderId: "892812037881",
-    appId: "1:892812037881:web:fa3935fe1a0a0232fcdc28"
+  apiKey: "AIzaSyDXr-2WgHrwMVM-vMqWL6Stx5eW-n8TWzw",
+
+  authDomain: "schemes-8c091.firebaseapp.com",
+
+  projectId: "schemes-8c091",
+
+  storageBucket: "schemes-8c091.appspot.com",
+
+  messagingSenderId: "1045322872755",
+
+  appId: "1:1045322872755:web:e404e71559bfe449f5fdc6"
+
   };
 
   const fireDb= firebase.initializeApp(firebaseConfig);

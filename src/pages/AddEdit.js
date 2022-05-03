@@ -10,6 +10,7 @@ const initialState = {
   seligible: "",
   sdetail: "",
   sdocs: "",
+  sstate:"",
   status: ""
 };
 
@@ -17,14 +18,14 @@ const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
 
-  const { sname, sbenefit, seligible, sdetail, sdocs, status } = state;
+  const { sname, sbenefit, seligible, sdetail, sdocs, sstate, status } = state;
 
   const navigate = useNavigate();
 
   const { id } = useParams();
 
   useEffect(() => {
-    firebase.child("contacts").on("value", (snapshot) => {
+    firebase.child("schemes").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -54,13 +55,15 @@ const AddEdit = () => {
     setState({ ...state, [name]: value });
   };
 
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status) {
+    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !sstate || !status) {
       toast.error("Please provide value into each input field");
     } else {
       if (!id) {
-        firebase.child("contacts").push(state, (err) => {
+        firebase.child("schemes").push(state, (err) => {
           console.log("state", state);
           if (err) {
             toast.error(err);
@@ -69,7 +72,7 @@ const AddEdit = () => {
           }
         });
       } else {
-        firebase.child(`contacts/${id}`).set(state, (err) => {
+        firebase.child(`schemes/${id}`).set(state, (err) => {
           console.log("state", state);
           if (err) {
             toast.error(err);
@@ -92,6 +95,28 @@ const AddEdit = () => {
         }}
         onSubmit={handleSubmit}
       >
+        {/* <label htmlFor="sstate">State</label>
+        <input
+          type="text"
+          id="sstate"
+          name="sstate"
+          placeholder="State "
+          value={sstate || ""}
+          onChange={handleInputChange}
+        /> */}
+        
+        <label>state: </label>
+          <select className="dropdown" name="colValue" >
+            <option>Select state</option>
+            <option value="tn">TamilNadu</option>
+            <option value="kl">Kerala</option>
+            <option value="ka">Karnataka</option>
+            <option value="ap">Andhra Pradesh</option>
+          </select>
+
+          <br></br>
+
+
         <label htmlFor="sname">Scheme Name</label>
         <input
           type="text"
@@ -137,7 +162,8 @@ const AddEdit = () => {
           value={sdocs || ""}
           onChange={handleInputChange}
         />
-        <label htmlFor="name">Status</label>
+        
+        <label htmlFor="status">Status</label>
         <input
           type="text"
           id="status"

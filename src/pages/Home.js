@@ -4,13 +4,15 @@ import firebase  from "../firebase";
 import { toast } from "react-toastify";
 import "./Home.css";
 
+
+
 const Home = () => {
   const [data, setData] = useState({});
   const [sortedData, setSortedData] = useState([])
   const [sort, setSort] = useState(false);
 
   useEffect(() => {
-    firebase.child("contacts").on("value", (snapshot) => {
+    firebase.child("schemes").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -27,7 +29,7 @@ const Home = () => {
     if (
       window.confirm("Are you sure that you wanted to delete that Scheme ?")
     ) {
-      firebase.child(`contacts/${id}`).remove((err) => {
+      firebase.child(`schemes/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
@@ -40,7 +42,7 @@ const Home = () => {
   const handleChange = (e) => {
     setSort(true);
     firebase
-      .child("contacts")
+      .child("schemes")
       .orderByChild(`${e.target.value}`)
       .on("value",(snapshot) => {
         let sortedData =[];
@@ -52,7 +54,7 @@ const Home = () => {
   };  
   const handleReset = () => {
     setSort(false);
-    firebase.child("contacts").on("value", (snapshot) => {
+    firebase.child("schemes").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -63,7 +65,7 @@ const Home = () => {
   
   const filterData = (value) => {
     firebase
-      .child("contacts")
+      .child("schemes")
       .orderByChild("status")
       .equalTo(value)
       .on("value", (snapshot) => {
@@ -75,21 +77,48 @@ const Home = () => {
   };
 
   
+  const filterData2 = (value) => {
+    firebase
+      .child("schemes")
+      .orderByChild("sstate")
+      .equalTo(value)
+      .on("value", (snapshot) => {
+        if (snapshot.val()) {
+          const data = snapshot.val();
+          setData(data);
+        }
+      });
+  };
+
+  
+
 
   return (
-    
-    <div style={{ marginTop: "100px" }}>
+   
 
-      <label>Sort By: </label>
-      <select className="dropdown" name="colValue" onChange={handleChange}>
+    <div style={{ marginTop: "100px" }}>
+       
+      {/* <label>Select State: </label>
+        <select className="dropdown" name="colValue" onChange={(e) => filterData(e.target.value)}>
           <option>Please Select</option>
-          <option value="sname">Scheme Name</option>
-          <option value="sbenefit">Scheme Benefit</option>
-          <option value="seligible">Eligible Criteria</option>
-          <option value="sdetail">Scheme Details</option>
-          <option value="sdocs">Documents required</option>
-          <option value="status">Status</option>
-      </select>
+          <option value="TN" >TamilNadu</option>
+          <option value="KL" >Kerala</option>
+          <option value="AP" >Andhra</option>
+          <option value="KT" >Karnataka</option>
+        </select>  */}
+        
+    
+    
+    
+      <label>Sort By: </label>
+        <select className="dropdown" name="colValue" onChange={handleChange}>
+            <option>Please Select</option>
+            <option value="sname">Scheme Name</option>
+            <option value="sbenefit">Scheme Benefit</option>
+            <option value="seligible">Eligible Criteria</option>
+            <option value="sstate">State</option>
+            
+        </select>
       <button className="bttn btn-reset" onClick={handleReset}>Reset</button>
       <br></br><br />
       <label>Status: </label>
@@ -106,6 +135,7 @@ const Home = () => {
             <th style={{ textAlign: "center" }}>Scheme Eligible</th>
             <th style={{ textAlign: "center" }}>Scheme Details</th>
             <th style={{ textAlign: "center" }}>Scheme Documents</th>
+            <th style={{ textAlign: "center" }}>State</th>
             <th style={{ textAlign: "center" }}>Status</th>
             <th style={{ textAlign: "center" }}>Action</th>
             {/*/{!sort && <th style={{ textAlign: "center" }}>Action</th> }*/} 
@@ -122,6 +152,7 @@ const Home = () => {
                   <td>{data[id].seligible}</td>
                   <td>{data[id].sdetail}</td>
                   <td>{data[id].sdocs}</td>
+                  <td>{data[id].sstate}</td>
                   <td>{data[id].status}</td>
                   <td>
                     <Link to={`/update/${id}`}>
@@ -150,6 +181,7 @@ const Home = () => {
                   <td>{item.seligible}</td>
                   <td>{item.sdetail}</td>
                   <td>{item.sdocs}</td>
+                  <td>{item.sstate}</td>
                   <td>{item.status}</td>
 
                 <td>
@@ -157,7 +189,7 @@ const Home = () => {
                       <button className="bttn btn-edit">Edit</button>
                     </Link>
 
-                    <button className="bttn btn-delete" onClick={() => onDelete(index)}>Delete</button>
+               <button className="bttn btn-delete" onClick={() => onDelete(index)}>Delete</button>
                     
                     <Link to={`/view/${index}`}>
                       <button className="bttn btn-reset">View</button>
@@ -170,8 +202,9 @@ const Home = () => {
         )}
         <br />
       </table>
-      
+    
     </div>
+    
   );
 };
 
