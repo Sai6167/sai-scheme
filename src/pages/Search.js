@@ -16,12 +16,13 @@ const Search = () => {
 
     useEffect(() => {
         searchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [search]);
 
     const searchData = () => {
         firebase
             .child("schemes")
-            .orderByChild("sstate")
+            .orderByChild("city")
             .equalTo(search)
             .on("value", (snapshot) => {
                 if (snapshot.val()){
@@ -30,6 +31,7 @@ const Search = () => {
                 }
             });
     };
+    
 
     return(
         <>
@@ -64,7 +66,7 @@ const Search = () => {
                                 <td>{data[id].seligible}</td>
                                 <td>{data[id].sdetail}</td>
                                 <td>{data[id].sdocs}</td>  
-                                <td>{data[id].sstate}</td>                              
+                                <td>{data[id].city}</td>                              
                                 <td>{data[id].status}</td>
                 
                              </tr>

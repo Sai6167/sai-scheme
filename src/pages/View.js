@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import  firebase  from "../firebase";
 import { useParams, Link } from "react-router-dom";
+
 import "./View.css";
 
 const View = () => {
   const [user, setUser] = useState({});
 
   const { id } = useParams();
+
+  //const [cityID, setcityID] = useState({});
 
   useEffect(() => {
     firebase
@@ -49,8 +52,11 @@ const View = () => {
           <br />
           <br />
           <strong>Scheme Documents: </strong>
-          <span>{user.sdocs}</span>
-          
+          <span>{user.sdocs}</span>          
+          <br />
+          <br />
+          <strong>State: </strong>
+          <span>{user.city}</span>          
           <br />
           <br />
           <strong>Scheme Status: </strong>

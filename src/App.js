@@ -10,7 +10,7 @@ import Search from "./pages/Search";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "./components/Header";
-//import * as React from 'react';
+//import * as React from 'react'; 
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
         <Header />
         
         <ToastContainer position="top-center"/>
+        
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/add" element={<AddEdit />}/>

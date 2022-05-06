@@ -1,16 +1,15 @@
-//rough work
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import firebase  from "../firebase";
 import { toast } from "react-toastify";
 import "./Home.css";
-import "./AddEdit.js";
+
+
 
 const Home = () => {
   const [data, setData] = useState({});
-  const [sortedData, setSortedData] = useState([]);
+  const [sortedData, setSortedData] = useState([])
   const [sort, setSort] = useState(false);
-  const [cityID, setcityID] = useState({});
 
   useEffect(() => {
     firebase.child("schemes").on("value", (snapshot) => {
@@ -78,7 +77,7 @@ const Home = () => {
   };
 
   
-  const filterData2 = (value) => {
+  /* const filterData2 = (value) => {
     firebase
       .child("schemes")
       .orderByChild("sstate")
@@ -89,7 +88,7 @@ const Home = () => {
           setData(data);
         }
       });
-  };
+  }; */
 
   
 
@@ -117,7 +116,7 @@ const Home = () => {
             <option value="sname">Scheme Name</option>
             <option value="sbenefit">Scheme Benefit</option>
             <option value="seligible">Eligible Criteria</option>
-            <option value="sstate">State</option>
+            <option value="city">State</option>
             
         </select>
       <button className="bttn btn-reset" onClick={handleReset}>Reset</button>
@@ -182,7 +181,7 @@ const Home = () => {
                   <td>{item.seligible}</td>
                   <td>{item.sdetail}</td>
                   <td>{item.sdocs}</td>
-                  <td>{item.city}</td>
+                  <td>{item.sstate}</td>
                   <td>{item.status}</td>
 
                 <td>
@@ -210,4 +209,3 @@ const Home = () => {
 };
 
 export default Home;
-

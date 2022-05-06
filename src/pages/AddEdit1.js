@@ -1,4 +1,3 @@
-//rough work
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import  firebase from "../firebase";
@@ -11,19 +10,20 @@ const initialState = {
   seligible: "",
   sdetail: "",
   sdocs: "",
-  sstate:"",
-  status: ""
+  city:"",
+  status: "" 
 };
 
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
-  const [cityID, setcityID] = useState({});
-  const { sname, sbenefit, seligible, sdetail, sdocs, sstate, status } = state;
+ //const [cityID, setcityID] = useState({});
+  const { sname, sbenefit, seligible, sdetail, sdocs, city, status } = state;
 
   const navigate = useNavigate();
 
   const { id } = useParams();
+  console.log(id);
 
   useEffect(() => {
     firebase.child("schemes").on("value", (snapshot) => {
@@ -33,7 +33,6 @@ const AddEdit = () => {
         setData({});
       }
     });
-    
 
     return () => {
       setData({});
@@ -59,11 +58,11 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status) {
+    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !city || !status) {
       toast.error("Please provide value into each input field");
     } else {
-      if (cityID) {
-        firebase.child(`schemes/${cityID}`).push(state, (err) => {
+      if (!id) {
+        firebase.child("schemes").push(state, (err) => {
           console.log("state", state);
           if (err) {
             toast.error(err);
@@ -72,7 +71,7 @@ const AddEdit = () => {
           }
         });
       } else {
-        firebase.child(`schemes/${cityID}/${id}`).set(state, (err) => {
+        firebase.child(`schemes/${id}`).set(state, (err) => {
           console.log("state", state);
           if (err) {
             toast.error(err);
@@ -85,9 +84,9 @@ const AddEdit = () => {
     }
   };
 
-  function selectStateHandler( event) {
+  /* function selectStateHandler( event) {
     setcityID(event.target.value)
-  }
+  } */
 
   return (
     <div style={{ marginTop: "100px" }}>
@@ -100,29 +99,35 @@ const AddEdit = () => {
         }}
         onSubmit={handleSubmit}
       >
-        {/* <label htmlFor="sstate">State</label>
+        <label htmlFor="city">State</label>
         <input
           type="text"
-          id="sstate"
-          name="sstate"
-          placeholder="State "
-          value={sstate || ""}
+          id="city"
+          name="city"
+          placeholder="Enter your State "
+          value={city || ""}
           onChange={handleInputChange}
-        /> */}
+        />
         
-        <label>State: </label>
-          <select className="stateDropdown" name="colValue" onChange={selectStateHandler}>
+        {/* <label htmlFor="sstate">state: </label>
+          <select className="stateDropdown" name="colValue" >
+            <option>Select state</option>
+            <option value="tn">TamilNadu</option>
+            <option value="kl">Kerala</option>
+            <option value="ka">Karnataka</option>
+            <option value="ap">Andhra Pradesh</option>
+          </select> */}
+
+     {/* <label>State: </label>
+          <select className="stateDropdown" name="colValue" id="sstate" onChange={selectStateHandler}>
             <option>Select state</option>
             <option value="tn">Tamil Nadu</option>
             <option value="kl">Kerala</option>
             <option value="ka">Karnataka</option>
             <option value="ap">Andhra Pradesh</option>
-          </select>
+          </select> */}
 
-          <br></br>
-
-
-        <label htmlFor="sname">Scheme Name</label>
+          <label htmlFor="sname">Scheme Name</label>
         <input
           type="text"
           id="sname"

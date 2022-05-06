@@ -39,7 +39,7 @@ const Header = () => {
                 </form>
                 <Link to="/">
                     <p
-                        className={`${activeTab == "Home" ? "active" : ""}`}
+                        className={`${activeTab === "Home" ? "active" : ""}`}
                         onClick={() => setActiveTab("Home")}
                     >
                         Home 
@@ -48,7 +48,7 @@ const Header = () => {
 
                 <Link to="/add">
                     <p
-                        className={`${activeTab == "Add Scheme" ? "active" : ""}`}
+                        className={`${activeTab === "Add Scheme" ? "active" : ""}`}
                         onClick={() => setActiveTab("Add Scheme")}
                     >
                         Add Scheme
@@ -57,7 +57,7 @@ const Header = () => {
 
                 <Link to="/about">
                     <p
-                        className={`${activeTab == "About" ? "active" : ""}`}
+                        className={`${activeTab === "About" ? "active" : ""}`}
                         onClick={() => setActiveTab("About")}
                     >
                         About 
