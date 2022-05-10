@@ -11,7 +11,7 @@ const initialState = {
   seligible: "",
   sdetail: "",
   sdocs: "",
-  sstate:"",
+  city:"",
   status: ""
 };
 
@@ -19,14 +19,14 @@ const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
   const [cityID, setcityID] = useState({});
-  const { sname, sbenefit, seligible, sdetail, sdocs, sstate, status } = state;
+  const { sname, sbenefit, seligible, sdetail, sdocs, city, status } = state;
 
   const navigate = useNavigate();
 
-  const { id } = useParams();
+  const { region, id } = useParams();
 
   useEffect(() => {
-    firebase.child("schemes").on("value", (snapshot) => {
+    firebase.child(`schemes/${region}`).on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setData({ ...snapshot.val() });
       } else {
@@ -55,11 +55,12 @@ const AddEdit = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
+    console.log(state)
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status) {
+    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status || !city) {
       toast.error("Please provide value into each input field");
     } else {
       if (cityID) {
@@ -85,8 +86,9 @@ const AddEdit = () => {
     }
   };
 
-  function selectStateHandler( event) {
+  function selectStateHandler(event) {
     setcityID(event.target.value)
+    setState({ ...state, [event.target.name]: event.target.value });
   }
 
   return (
@@ -111,7 +113,7 @@ const AddEdit = () => {
         /> */}
         
         <label>State: </label>
-          <select className="stateDropdown" name="colValue" onChange={selectStateHandler}>
+          <select className="stateDropdown" id="city" name="city" onChange={selectStateHandler}>
             <option>Select state</option>
             <option value="tn">Tamil Nadu</option>
             <option value="kl">Kerala</option>

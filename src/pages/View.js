@@ -7,13 +7,13 @@ import "./View.css";
 const View = () => {
   const [user, setUser] = useState({});
 
-  const { id } = useParams();
+  const { region, id } = useParams();
 
   //const [cityID, setcityID] = useState({});
 
   useEffect(() => {
     firebase
-      .child(`schemes/${id}`)
+      .child(`schemes/${region}/${id}`)
       .get()
       .then((snapshot) => {
         if (snapshot.exists()) {

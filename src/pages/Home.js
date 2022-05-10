@@ -12,6 +12,8 @@ const Home = () => {
   const [sort, setSort] = useState(false);
   const [cityID, setcityID] = useState({});
 
+  let sno = 0;
+
   useEffect(() => {
     firebase.child("schemes").on("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -26,11 +28,11 @@ const Home = () => {
     };
   }, []);
 
-  const onDelete = (id) => {
+  const onDelete = (state, id) => {
     if (
       window.confirm("Are you sure that you wanted to delete that Scheme ?")
     ) {
-      firebase.child(`schemes/${id}`).remove((err) => {
+      firebase.child(`schemes/${state}/${id}`).remove((err) => {
         if (err) {
           toast.error(err);
         } else {
@@ -91,9 +93,6 @@ const Home = () => {
       });
   };
 
-  
-
-
   return (
    
 
@@ -145,28 +144,34 @@ const Home = () => {
         {!sort && (
           <tbody>
             {Object.keys(data).map((id, index) => {
+              const state = data[id];
               return (
-                <tr key={id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{data[id].sname}</td>
-                  <td>{data[id].sbenefit}</td>
-                  <td>{data[id].seligible}</td>
-                  <td>{data[id].sdetail}</td>
-                  <td>{data[id].sdocs}</td>
-                  <td>{data[id].city}</td>
-                  <td>{data[id].status}</td>
-                  <td>
-                    <Link to={`/update/${id}`}>
-                      <button className="bttn btn-edit">Edit</button>
-                    </Link>
+                Object.keys(state).map(item => {
+                  sno++;
+                  return (
+                    <tr key={index}>
+                      <th scope="row">{sno}</th>
+                      <td>{state[item].sname}</td>
+                      <td>{state[item].sbenefit}</td>
+                      <td>{state[item].seligible}</td>
+                      <td>{state[item].sdetail}</td>
+                      <td>{state[item].sdocs}</td>
+                      <td>{state[item].city}</td>
+                      <td>{state[item].status}</td>
+                      <td>
+                        <Link to={`/update/${id}/${item}`}>  {/* /update/state/id */}
+                          <button className="bttn btn-edit">Edit</button>
+                        </Link>
 
-                    <button className="bttn btn-delete" onClick={() => onDelete(id)}>Delete</button>
-                    
-                    <Link to={`/view/${id}`}>
-                      <button className="bttn btn-reset">View</button>
-                    </Link>
-                  </td>
-                </tr>
+                        <button className="bttn btn-delete" onClick={() => onDelete(id, item)}>Delete</button>  {/* onDelete(state/id) */}
+                        
+                        <Link to={`/view/${id}/${item}`}>
+                          <button className="bttn btn-reset">View</button>
+                        </Link>
+                      </td>
+                    </tr>
+                  )
+                })
               );
             })}
           </tbody>
