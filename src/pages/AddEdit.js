@@ -38,7 +38,7 @@ const AddEdit = () => {
     return () => {
       setData({});
     };
-  }, [id]);
+  }, [id, region]);
 
   useEffect(() => {
     if (id) {
@@ -122,7 +122,7 @@ const AddEdit = () => {
           </select>
 
           <br></br>
-
+          
 
         <label htmlFor="sname">Scheme Name</label>
         <input
