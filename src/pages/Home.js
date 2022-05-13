@@ -116,7 +116,7 @@ const Home = () => {
             <option value="sname">Scheme Name</option>
             <option value="sbenefit">Scheme Benefit</option>
             <option value="seligible">Eligible Criteria</option>
-            <option value="sstate">State</option>
+            <option value="city">State</option>
             
         </select>
       <button className="bttn btn-reset" onClick={handleReset}>Reset</button>
@@ -131,8 +131,8 @@ const Home = () => {
           <tr>
             <th style={{ textAlign: "center" }}>No</th>
             <th style={{ textAlign: "center" }}>Scheme Name</th>
-            <th style={{ textAlign: "center" }}>Scheme Benefit</th>
             <th style={{ textAlign: "center" }}>Scheme Eligible</th>
+            <th style={{ textAlign: "center" }}>Scheme Benefit</th>            
             <th style={{ textAlign: "center" }}>Scheme Details</th>
             <th style={{ textAlign: "center" }}>Scheme Documents</th>
             <th style={{ textAlign: "center" }}>State</th>
@@ -152,8 +152,8 @@ const Home = () => {
                     <tr key={index}>
                       <th scope="row">{sno}</th>
                       <td>{state[item].sname}</td>
-                      <td>{state[item].sbenefit}</td>
                       <td>{state[item].seligible}</td>
+                      <td>{state[item].sbenefit}</td>
                       <td>{state[item].sdetail}</td>
                       <td>{state[item].sdocs}</td>
                       <td>{state[item].city}</td>
@@ -176,15 +176,15 @@ const Home = () => {
             })}
           </tbody>
         )}
-        {sort && (
+        {/* {sort && (
           <tbody>
             {sortedData.map((item, index) => {
               return(
                 <tr key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>{item.sname}</td>
-                  <td>{item.sbenefit}</td>
                   <td>{item.seligible}</td>
+                  <td>{item.sbenefit}</td>
                   <td>{item.sdetail}</td>
                   <td>{item.sdocs}</td>
                   <td>{item.city}</td>
@@ -205,7 +205,7 @@ const Home = () => {
               );           
             })}
           </tbody>
-        )}
+        )} */}
         <br />
       </table>
     

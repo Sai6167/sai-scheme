@@ -34,7 +34,6 @@ const AddEdit = () => {
       }
     });
     
-
     return () => {
       setData({});
     };
@@ -63,9 +62,8 @@ const AddEdit = () => {
     if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status || !city) {
       toast.error("Please provide value into each input field");
     } else {
-      if (cityID) {
+      if (!id) {
         firebase.child(`schemes/${cityID}`).push(state, (err) => {
-          console.log("state", state);
           if (err) {
             toast.error(err);
           } else {
@@ -73,8 +71,7 @@ const AddEdit = () => {
           }
         });
       } else {
-        firebase.child(`schemes/${cityID}/${id}`).set(state, (err) => {
-          console.log("state", state);
+        firebase.child(`schemes/${region}/${id}`).set(state, (err) => {
           if (err) {
             toast.error(err);
           } else {
@@ -102,27 +99,36 @@ const AddEdit = () => {
         }}
         onSubmit={handleSubmit}
       >
-        {/* <label htmlFor="sstate">State</label>
+        <label htmlFor="city">State</label>
         <input
           type="text"
-          id="sstate"
-          name="sstate"
+          id="city"
+          name="city"
           placeholder="State "
-          value={sstate || ""}
-          onChange={handleInputChange}
-        /> */}
+          value={city || ""}
+          onChange={selectStateHandler}
+        />
         
-        <label>State: </label>
+        {/* <label>State: </label>
           <select className="stateDropdown" id="city" name="city" onChange={selectStateHandler}>
             <option>Select state</option>
             <option value="tn">Tamil Nadu</option>
             <option value="kl">Kerala</option>
             <option value="ka">Karnataka</option>
             <option value="ap">Andhra Pradesh</option>
-          </select>
+          </select> */}
 
           <br></br>
-          
+        
+        <label htmlFor="seligible">Eligible Criteria</label>
+        <input
+          type="text"
+          id="seligible"
+          name="seligible"
+          placeholder="Enter Eligibility"
+          value={seligible || ""}
+          onChange={handleInputChange}
+        />
 
         <label htmlFor="sname">Scheme Name</label>
         <input
@@ -142,15 +148,7 @@ const AddEdit = () => {
           value={sbenefit || ""}
           onChange={handleInputChange}
         />
-        <label htmlFor="seligible">Eligible Criteria</label>
-        <input
-          type="text"
-          id="seligible"
-          name="seligible"
-          placeholder="Enter Eligibility"
-          value={seligible || ""}
-          onChange={handleInputChange}
-        />
+        
         <label htmlFor="sdetail">Scheme Details</label>
         <input
           type="text"

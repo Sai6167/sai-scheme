@@ -5,6 +5,7 @@ import "./Search.css"
 
 const Search = () => {
     const [data,setData] = useState({});
+    const stateList = ["ap", "tn", "kl", "ka"]
 
     const useQuery = () => {
         return new URLSearchParams(useLocation().search);
@@ -20,16 +21,20 @@ const Search = () => {
     }, [search]);
 
     const searchData = () => {
-        firebase
-            .child("schemes")
-            .orderByChild("city")
-            .equalTo(search)
-            .on("value", (snapshot) => {
-                if (snapshot.val()){
-                    const data = snapshot.val();
-                    setData(data);
-                }
-            });
+        stateList.map(state => {
+            return {
+                firebase
+                .child(`schemes/ap`)
+                    .orderByChild("seligible")
+                    .equalTo(search)
+                    .on("value", (snapshot) => {
+                        if (snapshot.val()){
+                            const data = snapshot.val();
+                            setData(data);
+                        }
+                    });
+            }
+        })
     };
     
 
@@ -45,8 +50,8 @@ const Search = () => {
                         <tr>
                             <th style={{ textAlign: "center" }}>No.</th>
                             <th style={{ textAlign: "center" }}>Scheme Name</th>
-                            <th style={{ textAlign: "center" }}>Scheme Benefit</th>
                             <th style={{ textAlign: "center" }}>Scheme Eligible</th>
+                            <th style={{ textAlign: "center" }}>Scheme Benefit</th>
                             <th style={{ textAlign: "center" }}>Scheme Details</th>
                             <th style={{ textAlign: "center" }}>Scheme Documents</th>
                             <th style={{ textAlign: "center" }}>State</th>
@@ -62,8 +67,8 @@ const Search = () => {
                                 <th scope="row">{index + 1}</th>
                                
                                 <td>{data[id].sname}</td>
-                                <td>{data[id].sbenefit}</td>
                                 <td>{data[id].seligible}</td>
+                                <td>{data[id].sbenefit}</td>
                                 <td>{data[id].sdetail}</td>
                                 <td>{data[id].sdocs}</td>  
                                 <td>{data[id].city}</td>                              
