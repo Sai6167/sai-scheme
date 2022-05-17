@@ -10,7 +10,7 @@ const Home = () => {
   const [data, setData] = useState({});
   const [sortedData, setSortedData] = useState([]);
   const [sort, setSort] = useState(false);
-  const [cityID, setcityID] = useState({});
+  //  const [cityID, setcityID] = useState({});
 
   let sno = 0;
 
@@ -52,9 +52,10 @@ const Home = () => {
         snapshot.forEach((snap) => {
           sortedData.push(snap.val());
         });
-        setSortedData(sortedData);
+        setSortedData(sortedData);//sorted data
       });
   };  
+
   const handleReset = () => {
     setSort(false);
     firebase.child("schemes").on("value", (snapshot) => {
@@ -65,7 +66,7 @@ const Home = () => {
       }
     });
   }; 
-  
+   
   const filterData = (value) => {
     firebase
       .child("schemes")
@@ -80,7 +81,7 @@ const Home = () => {
   };
 
   
-  const filterData2 = (value) => {
+  /*  const filterData2 = (value) => {
     firebase
       .child("schemes")
       .orderByChild("sstate")
@@ -91,12 +92,12 @@ const Home = () => {
           setData(data);
         }
       });
-  };
-
+  }; 
+ */
   return (
    
 
-    <div style={{ marginTop: "100px" }}>
+    <div style={{ marginTop: "30px" }}>
        
       {/* <label>Select State: </label>
         <select className="dropdown" name="colValue" onChange={(e) => filterData(e.target.value)}>
@@ -176,7 +177,7 @@ const Home = () => {
             })}
           </tbody>
         )}
-        {/* {sort && (
+        {sort && (
           <tbody>
             {sortedData.map((item, index) => {
               return(
@@ -205,7 +206,7 @@ const Home = () => {
               );           
             })}
           </tbody>
-        )} */}
+        )}
         <br />
       </table>
     

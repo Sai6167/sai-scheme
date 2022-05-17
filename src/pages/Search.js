@@ -22,9 +22,9 @@ const Search = () => {
 
     const searchData = () => {
         stateList.map(state => {
-            return {
+            //return {
                 firebase
-                .child(`schemes/ap`)
+                    .child(`schemes/ap`)
                     .orderByChild("seligible")
                     .equalTo(search)
                     .on("value", (snapshot) => {
@@ -33,7 +33,7 @@ const Search = () => {
                             setData(data);
                         }
                     });
-            }
+        //    }
         })
     };
     

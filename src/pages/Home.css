@@ -4,11 +4,11 @@
     font-size: 0.9em;
     font-family: sans-serif;
     max-width: 800px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px #4E944F;
   }
   
   .styled-table thead tr {
-    background-color: antiquewhite;
+    background-color: #E9EFC0;
     color: #ffffff;
     text-align: left;
   }
@@ -65,7 +65,7 @@
   }
 
   .btn-reset {
-    background-color: darkolivegreen;
+    background-color: #4E944F;
     color: black;
   }
 
@@ -78,3 +78,5 @@
     background-color: #eb7648;
     color: black;
   }
+
+  
