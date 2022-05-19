@@ -4,11 +4,11 @@
     font-size: 0.9em;
     font-family: sans-serif;
     max-width: 800px;
-    box-shadow: 0 0 20px #4E944F;
+    box-shadow: 0 0 20px #6faae0;
   }
   
   .styled-table thead tr {
-    background-color: #E9EFC0;
+    background-color: #4ab3aa;
     color: #ffffff;
     text-align: left;
   }
@@ -19,7 +19,7 @@
   }
   
   .styled-table tbody tr {
-    border-bottom: 1px solid #06ee67;
+    border-bottom: 1px solid #72a8db;
   }
   
   .styled-table tbody tr:nth-of-type(even) {
@@ -32,7 +32,7 @@
   
   .bttn {
     border: none;
-    color: rgb(95, 236, 13);
+    color: white;
     padding: 5px 8px;
     text-align: center;
     text-decoration: none;
@@ -44,11 +44,11 @@
   }
   
   .btn-edit {
-    background-color: #e7eef0;
+    background-color: #008cba;
   }
 
   .btn-reset {
-    background-color: green;
+    background-color: #f44336;
   }
   
   .btn-delete {
@@ -56,7 +56,7 @@
   }
   
   .btn-see {
-    background-color: green;
+    background-color: #e7e7e7;
   }
 
   .dropdown {

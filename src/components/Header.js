@@ -29,13 +29,13 @@ const Header = () => {
             <p className="logo">Schemes App</p>
             <div className="header-right">
                 <form onSubmit={handleSubmit} style={{display:"inline"}}>
-                    <input
+                    {/* <input
                     type="text"
                     className="inputField"
                     placeholder="Search Scheme..."
                     onChange={(e) => setSearch(e.target.value)}
                     value={search}
-                    />
+                    /> */}
                 </form>
                 <Link to="/">
                     <p
@@ -55,14 +55,14 @@ const Header = () => {
                     </p>
                 </Link>
 
-                <Link to="/about">
+                {/* <Link to="/about">
                     <p
                         className={`${activeTab === "About" ? "active" : ""}`}
                         onClick={() => setActiveTab("About")}
                     >
                         About 
                     </p>
-                </Link>
+                </Link> */}
 
             </div>    
         </div>

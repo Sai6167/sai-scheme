@@ -42,43 +42,43 @@ const Home = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setSort(true);
-    firebase
-      .child("schemes")
-      .orderByChild(`${e.target.value}`)
-      .on("value",(snapshot) => {
-        let sortedData =[];
-        snapshot.forEach((snap) => {
-          sortedData.push(snap.val());
-        });
-        setSortedData(sortedData);//sorted data
-      });
-  };  
+  // const handleChange = (e) => {
+  //   setSort(true);
+  //   firebase
+  //     .child("schemes")
+  //     .orderByChild(`${e.target.value}`)
+  //     .on("value",(snapshot) => {
+  //       let sortedData =[];
+  //       snapshot.forEach((snap) => {
+  //         sortedData.push(snap.val());
+  //       });
+  //       setSortedData(sortedData);//sorted data
+  //     });
+  // };  
 
-  const handleReset = () => {
-    setSort(false);
-    firebase.child("schemes").on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setData({ ...snapshot.val() });
-      } else {
-        setData({});
-      }
-    });
-  }; 
+  // const handleReset = () => {
+  //   setSort(false);
+  //   firebase.child("schemes").on("value", (snapshot) => {
+  //     if (snapshot.val() !== null) {
+  //       setData({ ...snapshot.val() });
+  //     } else {
+  //       setData({});
+  //     }
+  //   });
+  // }; 
    
-  const filterData = (value) => {
-    firebase
-      .child("schemes")
-      .orderByChild("status")
-      .equalTo(value)
-      .on("value", (snapshot) => {
-        if (snapshot.val()) {
-          const data = snapshot.val();
-          setData(data);
-        }
-      });
-  };
+  // const filterData = (value) => {
+  //   firebase
+  //     .child("schemes")
+  //     .orderByChild("status")
+  //     .equalTo(value)
+  //     .on("value", (snapshot) => {
+  //       if (snapshot.val()) {
+  //         const data = snapshot.val();
+  //         setData(data);
+  //       }
+  //     });
+  // };
 
   
   /*  const filterData2 = (value) => {
@@ -111,7 +111,7 @@ const Home = () => {
     
     
     
-      <label>Sort By: </label>
+      {/*<label>Sort By: </label>
         <select className="dropdown" name="colValue" onChange={handleChange}>
             <option>Please Select</option>
             <option value="sname">Scheme Name</option>
@@ -126,7 +126,7 @@ const Home = () => {
       <button className="btn btn-active" onClick={() => filterData("Active")}>Active</button>
       <button className="btn btn-inactive" onClick={() => filterData("Inactive")}>Inactive</button>
       <br />
-      <br></br>
+      <br></br>*/}
       <table className="styled-table">
         <thead>
           <tr>

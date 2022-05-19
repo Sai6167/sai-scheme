@@ -1,6 +1,6 @@
 .header{
     overflow: hidden;
-    background-color: #A2D5AD;
+    background-color: #4ab3aa;
 }
 
 .header p{
@@ -26,16 +26,17 @@
 .header p.logo{
     font-size: 20px;
     font-weight: bolder;
-    color: rgb(39, 136, 136)rgb(14, 112, 19);
+    background-color: #3096a3;
+    color: white
 }
 
 .header p:hover{
-    background-color: #019267;
+    background-color: #629197;
     color: blanchedalmond;
 }
 
 .header p.active{
-    background-color: #019267;
+    background-color: #3096a3;
     color: azure;
 }
 
