@@ -25,41 +25,41 @@ const View = () => {
   }, [id]);
   
   return (
-    <div style={{ marginTop: "150px" }}>
+    <div style={{ marginTop: "25px" }}>
       <div className="card">
         <div className="card-header">
           <p>Scheme Info </p>
         </div>
         <div className="container">
-          <strong>Scheme ID: </strong>
+          <strong>Scheme ID : </strong>
           <span>{id}</span>
           <br />
           <br />
-          <strong>Scheme Name: </strong>
+          <strong>Scheme Name : </strong>
           <span>{user.sname}</span>
           <br />
           <br />
-          <strong>Scheme Benefit: </strong>
+          <strong>Scheme Benefit : </strong>
           <span>{user.sbenefit}</span>
           <br />
           <br />
-          <strong>Scheme Eligibility: </strong>
+          <strong>Scheme Eligibility : </strong>
           <span>{user.seligible}</span>
           <br />
           <br />
-          <strong>Scheme Detail: </strong>
+          <strong>Scheme Detail : </strong>
           <span>{user.sdetail}</span>
           <br />
           <br />
-          <strong>Scheme Documents: </strong>
+          <strong>Scheme Documents : </strong>
           <span>{user.sdocs}</span>          
           <br />
           <br />
-          <strong>State: </strong>
+          <strong>State : </strong>
           <span>{user.city}</span>          
           <br />
           <br />
-          <strong>Scheme Status: </strong>
+          <strong>Scheme Status : </strong>
           <span>{user.status}</span>
           <br />
           <br />

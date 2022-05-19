@@ -1,7 +1,7 @@
 .styled-table {
     border-collapse: collapse;
     margin: auto;
-    font-size: 0.9em;
+    font-size: 1.0em;
     font-family: sans-serif;
     max-width: 800px;
     box-shadow: 0 0 20px #6faae0;
@@ -15,7 +15,7 @@
   
   .styled-table th,
   .styled-table td {
-    padding: 12px 15px;
+    padding: 10px 22px;
   }
   
   .styled-table tbody tr {
@@ -33,7 +33,7 @@
   .bttn {
     border: none;
     color: white;
-    padding: 5px 8px;
+    padding: 4px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -48,7 +48,7 @@
   }
 
   .btn-reset {
-    background-color: #f44336;
+    background-color: #a9e029;
   }
   
   .btn-delete {
@@ -56,7 +56,7 @@
   }
   
   .btn-see {
-    background-color: #e7e7e7;
+    background-color: #ffffff;
   }
 
   .dropdown {
@@ -66,7 +66,7 @@
 
   .btn-reset {
     background-color: #4E944F;
-    color: black;
+    color: rgb(255, 255, 255);
   }
 
   .btn-active {

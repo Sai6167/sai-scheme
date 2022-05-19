@@ -5,11 +5,11 @@
 
 .header p{
     float: left;
-    color: black;
+    color: rgb(255, 255, 255);
     text-align: center;
     padding: 10px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 15px;
     border-radius: 7px;
 }
@@ -31,7 +31,7 @@
 }
 
 .header p:hover{
-    background-color: #629197;
+    background-color: #3096a3;
     color: blanchedalmond;
 }
 

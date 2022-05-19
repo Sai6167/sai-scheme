@@ -26,17 +26,19 @@ const Header = () => {
     };
     return(
         <div className="header">
+            <p></p>
             <p className="logo">Schemes App</p>
+            
             <div className="header-right">
-                <form onSubmit={handleSubmit} style={{display:"inline"}}>
-                    {/* <input
+                {/* <form onSubmit={handleSubmit} style={{display:"inline"}}>
+                    <input
                     type="text"
                     className="inputField"
                     placeholder="Search Scheme..."
                     onChange={(e) => setSearch(e.target.value)}
                     value={search}
-                    /> */}
-                </form>
+                    />
+                </form> */}
                 <Link to="/">
                     <p
                         className={`${activeTab === "Home" ? "active" : ""}`}
@@ -54,7 +56,7 @@ const Header = () => {
                         Add Scheme
                     </p>
                 </Link>
-
+                <p></p>
                 {/* <Link to="/about">
                     <p
                         className={`${activeTab === "About" ? "active" : ""}`}
