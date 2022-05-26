@@ -134,7 +134,7 @@ const Home = () => {
             <th style={{ textAlign: "center" }}>Scheme Name</th>
             <th style={{ textAlign: "center" }}>Scheme Eligible</th>
             <th style={{ textAlign: "center" }}>Scheme Benefit</th>            
-            {/* <th style={{ textAlign: "center" }}>Scheme Details</th> */}
+            <th style={{ textAlign: "center" }}>Scheme Details</th>
             <th style={{ textAlign: "center" }}>Scheme Documents</th>
             <th style={{ textAlign: "center" }}>State</th>
             <th style={{ textAlign: "center" }}>Status</th>
@@ -155,7 +155,7 @@ const Home = () => {
                       <td>{state[item].sname}</td>
                       <td>{state[item].seligible}</td>
                       <td>{state[item].sbenefit}</td>
-                      {/* <td>{state[item].sdetail}</td> */}
+                      <td>{state[item].sdetail}</td>
                       <td>{state[item].sdocs}</td>
                       <td>{state[item].city}</td>
                       <td>{state[item].status}</td>
@@ -186,7 +186,7 @@ const Home = () => {
                   <td>{item.sname}</td>
                   <td>{item.seligible}</td>
                   <td>{item.sbenefit}</td>
-                  {/* <td>{item.sdetail}</td> */}
+                  <td>{item.sdetail}</td>
                   <td>{item.sdocs}</td>
                   <td>{item.city}</td>
                   <td>{item.status}</td>

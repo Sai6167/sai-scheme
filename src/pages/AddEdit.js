@@ -12,14 +12,15 @@ const initialState = {
   sdetail: "",
   sdocs: "",
   city:"",
-  status: ""
+  status: "",
+  dept:""
 };
 
 const AddEdit = () => {
   const [state, setState] = useState(initialState);
   const [data, setData] = useState({});
   const [cityID, setcityID] = useState({});
-  const { sname, sbenefit, seligible, sdetail, sdocs, city, status } = state;
+  const { sname, sbenefit, seligible, sdetail, sdocs, city, status, dept } = state;
 
   const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ const AddEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status || !city) {
+    if (!sname || !sbenefit || !seligible || !sdetail || !sdocs || !status || !city || !dept) {
       toast.error("Please provide value into each input field");
     } else {
       if (!id) {
@@ -93,8 +94,7 @@ const AddEdit = () => {
       <form
         style={{
           margin: "auto",
-          padding: "15px",
-          
+          padding: "15px",          
           maxWidth: "400px",
           alignContent: "center",
         }}
@@ -110,14 +110,19 @@ const AddEdit = () => {
           onChange={selectStateHandler}
         />
         
-        {/* <label>State: </label>
-          <select className="stateDropdown" id="city" name="city" onChange={selectStateHandler}>
-            <option>Select state</option>
-            <option value="tn">Tamil Nadu</option>
-            <option value="kl">Kerala</option>
-            <option value="ka">Karnataka</option>
-            <option value="ap">Andhra Pradesh</option>
-          </select> */}
+        <label htmlFor="dept">Department: </label>
+          <select className="DeptDropdown" id="dept" name="dept" value={dept || ""} onChange={handleInputChange}>
+            <option value="Public Department">Select Dept</option>
+            <option value="Education Department">Education</option>                       
+            <option value="Agriculture and Farmer Welfare Department">Agriculture</option> 
+            <option value="Welfare of Differently Abled Persons">Disabled</option>
+            <option value="Department of Ex-Servicemen Welfare">ESM</option>
+            <option value="Social Welfare and Women Empowerment">Social / Women / Widow</option>            
+            <option value="Tribal Welfare and Rural Development">Tribal / Rural</option>
+            <option value="Minorities Welfare Department">Minority / Caste</option>
+            <option value="Labour Welfare and Skill Development">Labour / Skill</option>
+            
+          </select>
 
           <br></br>
         
